@@ -1,0 +1,1 @@
+const String messagesCollection = 'massages';
