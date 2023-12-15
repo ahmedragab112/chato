@@ -47,7 +47,6 @@ class Home extends StatelessWidget {
                   itemCount: bloc.massages.length,
                 ),
               ),
-              
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -94,23 +93,3 @@ class Home extends StatelessWidget {
         ));
   }
 }
-/*Expanded(
-                  child: ListView.builder(
-                    reverse: true,
-                    controller: bloc.scrollController,
-                    itemBuilder: (context, index) => data[index].email ==
-                            FirebaseAuth.instance.currentUser!.email
-                        ? ChatBubble(
-                            myChat: true,
-                           massage: data[index],
-                            color: Colors.blue,
-                          )
-                        : ChatBubble(
-                            myChat: false,
-                            massage: data[index],
-                            color: Colors.orange,
-                          ),
-                    itemCount: data.length,
-                  ),
-                );
-             */
