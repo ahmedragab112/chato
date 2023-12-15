@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:chatapp/constant/constant.dart';
@@ -42,7 +41,6 @@ class HomeCubit extends Cubit<HomecubitState> {
             (e) => e.data(),
           )
           .toList();
-      log(massages.length.toString());
       emit(HomecubitSuccess());
     });
   }
