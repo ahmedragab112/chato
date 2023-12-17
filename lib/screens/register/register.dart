@@ -1,8 +1,7 @@
 
 
+import 'package:chatapp/feature/auth%20feature/cubit/auth_cubit.dart';
 import 'package:chatapp/router/routes.dart';
-import 'package:chatapp/screens/register/manager/regsister_cubit_cubit.dart';
-import 'package:chatapp/screens/register/manager/regsister_cubit_state.dart';
 import 'package:chatapp/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +14,7 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bloc = BlocProvider.of<RegsisterCubit>(context);
+    var bloc = BlocProvider.of<AuthCubit>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
@@ -29,12 +28,11 @@ class Register extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: BlocConsumer<RegsisterCubit, RegsisterCubitState>(
+                child: BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
                     if (state is RegisterSuccessState) {
                       customSnackBar(context, 'Success');
-                      Navigator.pushNamed(context, Routes.homePage,
-                          arguments: bloc.email);
+                      Navigator.pushNamed(context, Routes.homePage);
                     } else if (state is RegisterErrorState) {
                       Navigator.pop(context);
                       customSnackBar(context, state.errorMassage);
@@ -49,7 +47,8 @@ class Register extends StatelessWidget {
                   },
                   builder: (context, state) {
                     return Form(
-                      key: bloc.formkey,
+                      key: bloc.formRegisterkey,
+                      autovalidateMode: bloc.autovalidateModeRegister,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -83,7 +82,7 @@ class Register extends StatelessWidget {
                           CustomTextFiled(
                             hintText: 'Enter Email',
                             onSaved: (value) {
-                              bloc.email = value;
+                              bloc.registerEmail = value;
                             },
                             type: 'Email',
                             inputType: TextInputType.name,
@@ -93,7 +92,7 @@ class Register extends StatelessWidget {
                             hintText: 'Enter password',
                             type: 'Password',
                             onSaved: (value) {
-                              bloc.password = value;
+                              bloc.registerPassword = value;
                             },
                             inputType: TextInputType.text,
                           ),
@@ -101,7 +100,7 @@ class Register extends StatelessWidget {
                           CustomButton(
                             type: 'Sign Up',
                             function: () {
-                              bloc.checkFormVlidation();
+                              bloc.checkFormRegisterVlidation();
                             },
                           ),
                           const Gap(10),

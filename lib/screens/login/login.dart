@@ -1,7 +1,6 @@
+import 'package:chatapp/feature/auth%20feature/cubit/auth_cubit.dart';
 import 'package:chatapp/router/routes.dart';
-import 'package:chatapp/screens/home/manager/homecubit_cubit.dart';
-import 'package:chatapp/screens/login/manager/login_cubit_cubit.dart';
-import 'package:chatapp/screens/login/manager/login_cubit_state.dart';
+
 import 'package:chatapp/widgets/custom_button.dart';
 import 'package:chatapp/helper/custom_snackbar.dart';
 import 'package:chatapp/widgets/custom_textfiled.dart';
@@ -14,7 +13,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bloc = BlocProvider.of<LoginCubit>(context);
+    var bloc = BlocProvider.of<AuthCubit>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
@@ -28,12 +27,11 @@ class Login extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: BlocConsumer<LoginCubit, LoginCubitState>(
+                child: BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
                     if (state is LoginLoadingState) {
                       const Center(child: CircularProgressIndicator());
                     } else if (state is LoginSuccessState) {
-                      BlocProvider.of<HomeCubit>(context).getMesssages();
                       Navigator.pushReplacementNamed(
                         context,
                         Routes.homePage,
@@ -44,8 +42,8 @@ class Login extends StatelessWidget {
                   },
                   builder: (context, state) {
                     return Form(
-                      autovalidateMode: bloc.autovalidateMode,
-                      key: bloc.formKey,
+                      autovalidateMode: bloc.autovalidateModeLogin,
+                      key: bloc.formLoginKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -78,7 +76,7 @@ class Login extends StatelessWidget {
                           const Gap(20),
                           CustomTextFiled(
                             onSaved: (value) {
-                              bloc.email = value!;
+                              bloc.loginEmail = value!;
                             },
                             hintText: 'Enter email',
                             type: 'Email',
@@ -87,7 +85,7 @@ class Login extends StatelessWidget {
                           const Gap(20),
                           CustomTextFiled(
                             onSaved: (value) {
-                              bloc.password = value!;
+                              bloc.loginPassword = value!;
                             },
                             hintText: 'Enter password',
                             type: 'Password',
@@ -97,7 +95,7 @@ class Login extends StatelessWidget {
                           CustomButton(
                             type: 'Login',
                             function: () {
-                              bloc.checkFormVlidation();
+                              bloc.checkLoginFormVlidation();
                             },
                           ),
                           const Gap(20),

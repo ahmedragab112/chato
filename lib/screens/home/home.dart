@@ -67,7 +67,6 @@ class Home extends StatelessWidget {
                           time: Timestamp.fromDate(DateTime.now()),
                           email: FirebaseAuth.instance.currentUser!.email!,
                         ));
-
                         bloc.scrollController
                             .animateTo(
                                 bloc.scrollController.position.minScrollExtent,

@@ -22,14 +22,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeCubit(),
-      child: MaterialApp(
-        theme: AppTheme.theme,
-        initialRoute: Routes.loginPage,
-        onGenerateRoute: AppRouter.generatRoute,
-        debugShowCheckedModeBanner: false,
-      ),
+    return MaterialApp(
+      theme: AppTheme.theme,
+      initialRoute: Routes.loginPage,
+      onGenerateRoute: AppRouter.generatRoute,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
