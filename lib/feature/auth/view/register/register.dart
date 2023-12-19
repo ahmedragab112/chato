@@ -1,20 +1,21 @@
+import 'package:chatapp/core/helper/custom_snackbar.dart';
+import 'package:chatapp/core/widgets/custom_button.dart';
+import 'package:chatapp/core/widgets/custom_textfiled.dart';
+import 'package:chatapp/feature/auth/manager/auth_bloc.dart';
+import 'package:chatapp/feature/auth/manager/auth_event.dart';
+import 'package:chatapp/feature/auth/manager/auth_state.dart';
+import 'package:chatapp/core/router/routes.dart';
 
-
-import 'package:chatapp/feature/auth%20feature/cubit/auth_cubit.dart';
-import 'package:chatapp/router/routes.dart';
-import 'package:chatapp/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import '../../helper/custom_snackbar.dart';
-import '../../widgets/custom_textfiled.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var bloc = BlocProvider.of<AuthCubit>(context);
+    var bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
@@ -28,7 +29,7 @@ class Register extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: BlocConsumer<AuthCubit, AuthState>(
+                child: BlocConsumer<AuthBloc, AuthState>(
                   listener: (context, state) {
                     if (state is RegisterSuccessState) {
                       customSnackBar(context, 'Success');
@@ -100,7 +101,7 @@ class Register extends StatelessWidget {
                           CustomButton(
                             type: 'Sign Up',
                             function: () {
-                              bloc.checkFormRegisterVlidation();
+                              bloc.add(ValidateRegeiseter());
                             },
                           ),
                           const Gap(10),

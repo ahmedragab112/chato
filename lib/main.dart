@@ -1,9 +1,8 @@
 import 'package:chatapp/firebase_options.dart';
 import 'package:chatapp/observer.dart';
-import 'package:chatapp/router/router.dart';
-import 'package:chatapp/router/routes.dart';
-import 'package:chatapp/screens/home/manager/homecubit_cubit.dart';
-import 'package:chatapp/theme/app_theme.dart';
+import 'package:chatapp/core/router/router.dart';
+import 'package:chatapp/core/router/routes.dart';
+import 'package:chatapp/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

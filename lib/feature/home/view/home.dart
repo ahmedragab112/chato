@@ -1,13 +1,13 @@
-import 'package:chatapp/model/massage_model.dart';
-import 'package:chatapp/router/routes.dart';
-import 'package:chatapp/screens/home/chat_buble.dart';
-import 'package:chatapp/screens/home/manager/homecubit_cubit.dart';
-import 'package:chatapp/screens/home/manager/homecubit_state.dart';
+import 'package:chatapp/feature/home/data/model/massage_model.dart';
+import 'package:chatapp/core/router/routes.dart';
+import 'package:chatapp/feature/home/view/widget/chat_buble.dart';
+import 'package:chatapp/feature/home/manager/homecubit_cubit.dart';
+import 'package:chatapp/feature/home/manager/homecubit_state.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 class Home extends StatelessWidget {
   const Home({super.key});
 

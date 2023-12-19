@@ -1,4 +1,4 @@
-import 'package:chatapp/model/massage_model.dart';
+import 'package:chatapp/feature/home/data/model/massage_model.dart';
 import 'package:flutter/material.dart';
 
 class ChatBubble extends StatelessWidget {

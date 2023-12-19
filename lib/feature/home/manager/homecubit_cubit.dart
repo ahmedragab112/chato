@@ -1,8 +1,8 @@
 
 import 'package:bloc/bloc.dart';
-import 'package:chatapp/constant/constant.dart';
-import 'package:chatapp/model/massage_model.dart';
-import 'package:chatapp/screens/home/manager/homecubit_state.dart';
+import 'package:chatapp/core/constant/constant.dart';
+import 'package:chatapp/feature/home/data/model/massage_model.dart';
+import 'package:chatapp/feature/home/manager/homecubit_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
